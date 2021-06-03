@@ -1,4 +1,4 @@
-import { BlockUser } from '../model'
+import { BlockUser } from './block-user'
 import { getRepository } from "typeorm";
 
 export class User {
