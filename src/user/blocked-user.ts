@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn } from "typeorm";
 
 @Entity()
-export class BlockUser {
+export class BlockedUser {
     @PrimaryColumn()
     senderId!: string;
     @PrimaryColumn()
