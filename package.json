@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "prebuild": "tsc",
-    "build": "webpack --mode production"
+    "_prebuild": "tsc",
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "_build": "webpack --mode production"
   },
   "nodemonConfig": {
     "watch": [
