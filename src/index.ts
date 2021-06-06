@@ -5,6 +5,8 @@ import { router } from './router'
 import { createWebSocket } from './web-socket'
 import { cfg as dbCfg } from './db-cfg'
 import { createConnection } from 'typeorm'
+import { serveSPA } from './spa'
+import process from 'process'
 
 const PORT = process.env.PORT || 8080
 const app: Application = express()
@@ -20,6 +22,11 @@ app.use(auth({
     secret: process.env.SECRET
 }))
 app.use('/api', router)
+
+// spa
+const pathToSPA = process.argv[2]
+if (pathToSPA)
+    serveSPA(app, pathToSPA)
 
 app.get('/api', (req, res) => res.send(JSON.stringify(req.oidc.user)))
 app.post('/callback', (req, res) => console.log('called back - ' + JSON.stringify(req.oidc.user)))

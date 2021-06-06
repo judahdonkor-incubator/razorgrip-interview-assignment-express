@@ -1,7 +1,8 @@
 import WebSocket, { Server as WSServer } from 'ws'
 import { Server } from 'http'
 import { Controller } from './user'
-import redis from 'redis'
+import { pub, sub } from './redis'
+
 
 type Data = {
     message: 'users-online' | 'blocked-users' | 'user-online' | 'user-offline' | 'user-blocked' | 'user-unblocked' | 'new-message'
@@ -11,8 +12,6 @@ type Data = {
 const ws = new WSServer({ noServer: true });
 
 // redis
-const sub = redis.createClient({ url: 'redis://localhost:7001' })
-const pub = sub.duplicate()
 const CHANNEL = 'ws:msg'
 sub.on('message', (channel, message) => {
     if (channel === CHANNEL) {
