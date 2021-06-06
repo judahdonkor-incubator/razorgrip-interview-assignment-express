@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
     "_prebuild": "tsc",
-    "tsc": "./node_modules/typescript/bin/tsc",
-    "build": "npm run tsc",
+    "build": "tsc",
     "_build": "webpack --mode production"
   },
   "nodemonConfig": {
