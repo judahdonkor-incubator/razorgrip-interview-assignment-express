@@ -7,5 +7,7 @@ export const cfg: ConnectionOptions = {
     url: process.env.DATABASE_URL,
     entities: [Message, BlockedUser, Online],
     synchronize: true,
-    extra: { ssl: true, rejectUnauthorized: false }
+    ssl: {
+        rejectUnauthorized: false
+    }
 }
